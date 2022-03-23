@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 
+//https://api.wmata.com/TrainPositions/TrainPositions?contentType=json&api_key=
+
 function App() {
+
+  const getTrain = () => {
+    fetch('https://api.wmata.com/TrainPositions/TrainPositions?contentType=json&api_key=')
+      .then(response => response.json())
+      .then(data => console.log(data));
+
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={getTrain}> Get a train!</button>
     </div>
   );
 }
