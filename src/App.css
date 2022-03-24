@@ -29,3 +29,38 @@
   background-color: #63b7af;
   border-radius: 2em;
 }
+
+.tableContainer {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.titleHead {
+  text-align: center;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  background-color: #282c34;
+  margin: 0;
+  padding: 20px;
+}
+
+.trainData {
+  text-align: center;
+}
+
+.serviceType {
+  padding: 10px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 36px;
+}
