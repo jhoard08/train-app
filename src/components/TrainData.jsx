@@ -17,7 +17,7 @@ const TrainData = () => {
   };
 
   if (trainData === undefined) {
-    return <div>Still Loading....</div>
+    return <div>Still Loading.....</div>
   }
 
   return (
