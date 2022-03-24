@@ -17,7 +17,7 @@ const TrainData = () => {
   }, []);
 
   const getTrainsWithFetch = async () => {
-    const response = await fetch('https://api.wmata.com/TrainPositions/TrainPositions?contentType=json&api_key={API-KEY}');
+    const response = await fetch('https://api.wmata.com/TrainPositions/TrainPositions?contentType=json&api_key=207e280fe77d4a3aa17ebf7ee8ca9b14 ');
     const jsonData = await response.json();
     setTrainData(jsonData);
     setFilteredData(jsonData);
