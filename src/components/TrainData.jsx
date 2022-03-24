@@ -17,7 +17,7 @@ const TrainData = () => {
   }, []);
 
   const getTrainsWithFetch = async () => {
-    const response = await fetch('https://api.wmata.com/TrainPositions/TrainPositions?contentType=json&api_key={API-KEY-HERE}');
+    const response = await fetch('https://api.wmata.com/TrainPositions/TrainPositions?contentType=json&api_key={API-KEY}');
     const jsonData = await response.json();
     setTrainData(jsonData);
     setFilteredData(jsonData);
@@ -25,38 +25,27 @@ const TrainData = () => {
   };
 
 
-  const handleSearch = (event) => {
-    console.log(filteredData);
-    let value = event.target.value.toLowerCase();
-    let result = [];
-    result = trainData.TrainPositions.filter((train) => {
-      return train.ServiceType.search(value) !== -1;
-    });
-    setFilteredData(result);
-  }
-
   // Keeps the application from blowing up before the data is loaded with undefined array
   if (filteredData === undefined) {
     return <div className="loading">Loading Train Data.....</div>
   }
 
-  /* Test function 
-  
+
   function filterArr(train) {
     return function () {
-      console.log(train);
-      const result = train.TrainPositions.filter(train => train.CarCount == "6");
-      setTrainData(result);
+      let result = [];
+      result = train.TrainPositions.filter(train => train.ServiceType == "Unknown");
+      setFilteredData(result);
       console.log(result);
       console.log(trainData);
     }
-  }*/
+  }
 
   return (
     <div className="trainData">
       <h1 className="titleHead">Train Data</h1>
       <label className="serviceType">Service Type - Unkown:</label>
-      <input type="checkbox" onChange={(event) => handleSearch(event)} />
+      <input type="checkbox" onClick={filterArr(filteredData)} />
       <table className="tableContainer">
         <thead>
           <tr>
@@ -64,6 +53,7 @@ const TrainData = () => {
             <th>Car Count</th>
             <th>Train Number</th>
             <th>Code Line</th>
+            <th>Destination</th>
           </tr>
         </thead>
         <tbody>
@@ -74,6 +64,7 @@ const TrainData = () => {
                 <td>{train.CarCount}</td>
                 <td>{train.TrainNumber}</td>
                 <td>{train.LineCode}</td>
+                <td>{train.DestinationStationCode}</td>
               </tr>
             ))
           }
