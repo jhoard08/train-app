@@ -56,3 +56,11 @@
 .serviceType {
   padding: 10px;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 36px;
+}
